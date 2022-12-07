@@ -1,0 +1,42 @@
+app:
+  uri:
+    base-uri: /api/v1
+    login: /login
+    refresh-token: /refresh-token
+    my-profile: /my-profile
+  jwt:
+    header: Authorization
+    secret: ef6234797b1ede815626ed0884a5d714
+    access-token:
+      expiration: 1 #Access token expiration in hour
+    refresh-token:
+      expiration: 1 #Refresh token expiration in days
+
+### DATABASE CONFIGURATION ###
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/blokajsecurity?serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: blokaj
+    password: blokaj
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+### PORT CONFIGURATION ###
+server:
+  port: 8080
+
+### SWAGGER CONFIGURATION ###
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /docs/api/v1/swagger-ui.html
+  api-docs:
+    enabled: true
+    path: /docs/api/v1/v3/api-docs

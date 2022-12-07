@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+  blokaj-db:
+    container_name: 'blokaj_db'
+    image: 'mysql:latest'
+    restart: always
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'blokaj'
+      MYSQL_PASSWORD: 'blokaj'
+      MYSQL_DATABASE: 'blokajsecurity'
+    volumes:
+      - blokaj-db:/var/lib/mysql
+    networks:
+      - blokaj
+
+  ### BLokaj Spring Security
+  blokaj-spring-security:
+    container_name: blokaj_spring_security
+    build:
+#      context:  #the path must be where the app has been located in your local machine.
+      dockerfile: Dockerfile #How is the dockerfile name
+    ports:
+      - '8080:8080' #in which port the app will be
+    environment:
+      SPRING_DATASOURCE_USERNAME: 'blokaj'
+      SPRING_DATASOURCE_PASSWORD: 'blokaj'
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://blokaj-db:3306/blokajsecurity'
+
+    depends_on:
+      - blokaj-db
+    networks:
+      - blokaj
+
+volumes:
+  blokaj-db:
+    driver: local
+
+networks:
+  blokaj:
