@@ -230,14 +230,14 @@ server:
   port: 8080
 ```
 7. Post login http://localhost:8080/api/v1/login
-```javascript
+```json
 {
   "usernameOrEmail": "blokaj",
   "password": "123"
 }
 ```
 8. This is the response that you can receive
-```javascript
+```json
 {
     "code": 200,
     "status": "OK",

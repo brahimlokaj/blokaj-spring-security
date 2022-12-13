@@ -10,7 +10,7 @@
     </parent>
     <packaging>jar</packaging>
 
-    <groupId>blokaj</groupId>
+    <groupId>org.blokaj</groupId>
     <artifactId>blokaj</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>blokaj-spring-security</name>
@@ -63,7 +63,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.11</version>
+            <version>1.6.13</version>
         </dependency>
 
         <dependency>
